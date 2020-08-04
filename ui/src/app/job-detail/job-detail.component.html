@@ -2,5 +2,8 @@
 <p>JobId: {{job?.jobId}}</p>
 <p>Engineer: {{job?.engineer}}</p>
 <p>When: {{job?.when | date:'shortDate'}}</p>
+<p>Customer</p>
+<p>- Name: {{job?.customer?.name || 'Unknown'}}</p>
+<p>- Type: {{job?.customer?.type || 'Unknown'}}</p>
 
 <a [routerLink]="['/jobs']">Back</a>
