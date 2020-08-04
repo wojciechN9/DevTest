@@ -3,6 +3,7 @@ using DeveloperTest.Business.Interfaces;
 using DeveloperTest.Database;
 using DeveloperTest.Database.Models;
 using DeveloperTest.Models;
+using DeveloperTest.Models.Extensions;
 
 namespace DeveloperTest.Business
 {
@@ -35,22 +36,12 @@ namespace DeveloperTest.Business
 
         public CustomerModel GetCustomer(int customerId)
         {
-            return context.Customers.Where(x => x.CustomerId == customerId).Select(x => new CustomerModel
-            {
-                CustomerId = x.CustomerId,
-                Name = x.Name,
-                Type = x.Type
-            }).SingleOrDefault();
+            return context.Customers.Where(x => x.CustomerId == customerId).Select(x => x.ToModel()).SingleOrDefault();
         }
 
         public CustomerModel[] GetCustomers()
         {
-            return context.Customers.Select(x => new CustomerModel
-            {
-                CustomerId = x.CustomerId,
-                Name = x.Name,
-                Type = x.Type
-            }).ToArray();
+            return context.Customers.Select(x => x.ToModel()).ToArray();
         }
     }
 }

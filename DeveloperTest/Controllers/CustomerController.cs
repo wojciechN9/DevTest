@@ -36,12 +36,7 @@ namespace DeveloperTest.Controllers
         [HttpPost]
         public IActionResult Create(BaseCustomerModel model)
         {
-            //Used fluentApi vaildation attribute inside BaseCustomerModel class
-            //if (model.Name.Length < 5)
-            //{
-            //    return BadRequest("Name should have at least 5 characters");
-            //}
-
+            //I'm using fluentApi vaildation attribute inside BaseCustomerModel class
             var customer = _customerService.CreateCustomer(model);
 
             return Created($"customer/{customer.CustomerId}", customer);
